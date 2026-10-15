@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-15T18:03:30+00:00",
+  "generated_at": "2026-10-15T18:16:54+00:00",
   "source": {
     "name": "Gambling.com",
     "url": "https://www.gambling.com/uk/online-casinos/bonus"
   },
   "extracted_with": "groq/openai/gpt-oss-120b",
-  "casino_count": 5,
+  "casino_count": 3,
   "casinos": [
     {
       "rank": 1,
@@ -20,7 +20,7 @@
         "min_deposit_amount": 10,
         "currency": "GBP",
         "bonus_type": "deposit_match",
-        "notes": "Wager within 60 days; one‑time use",
+        "notes": "Must wager 10x deposit within 60 days",
         "advertised_headline": "100% up to Â£50 + 11 Free Spins",
         "review_url": "https://www.gambling.com/uk/online-casinos/reviews/mr-vegas"
       },
@@ -45,7 +45,7 @@
         "min_deposit_amount": 10,
         "currency": "GBP",
         "bonus_type": "deposit_match",
-        "notes": "New players only",
+        "notes": "50 chances are free spins",
         "advertised_headline": "100% Welcome Bonus up to Â£25 + 50 Chances to Become a Millionaire",
         "review_url": "https://www.gambling.com/uk/online-casinos/reviews/mega-riches"
       },
@@ -70,7 +70,7 @@
         "min_deposit_amount": 10,
         "currency": "GBP",
         "bonus_type": "deposit_match",
-        "notes": "Wagering applies to bonus funds",
+        "notes": "Full terms apply",
         "advertised_headline": "100% Welcome Bonus up to Â£50 + 11 Free Spins",
         "review_url": "https://www.gambling.com/uk/online-casinos/reviews/videoslots"
       },
@@ -81,56 +81,6 @@
       },
       "needs_review": false,
       "raw_terms": "3 100% Welcome Bonus up to Â£50 + 11 Free Spins Visit Casino Compare Added GC Verified by Gambling.com Licensed and regulated by the UK Gambling Commission. This operator meets strict standards for player safety, fair play and secure payments. 18+. Gamble Responsibly. Gambleaware.org . New players only. Min. dep. Â£10. Wager req. 10x. 18+.- Full Terms Apply"
-    },
-    {
-      "rank": 4,
-      "casino": "Coral Casino",
-      "welcome_bonus": "50 Free Spins + 150 Free Spins on £10 play",
-      "wagering_requirement": 0,
-      "minimum_deposit": null,
-      "source_url": "https://www.gambling.com/uk/online-casinos/bonus",
-      "details": {
-        "wagering_display": "None",
-        "wagering_applies_to": null,
-        "min_deposit_amount": null,
-        "currency": "GBP",
-        "bonus_type": "free_spins",
-        "notes": "Bet £10 on slots within 7 days for 150 spins; 50 spins free on sign‑up; £0.10 per spin, 7‑day validity; some deposit types excluded",
-        "advertised_headline": "50 Free Spins on Sign-Up, 150 More on Â£10 Play",
-        "review_url": "https://www.gambling.com/uk/online-casinos/reviews/coral"
-      },
-      "checks": {
-        "welcome_bonus": "verified",
-        "wagering_multiplier": "unverified",
-        "min_deposit_amount": "missing"
-      },
-      "needs_review": true,
-      "raw_terms": "4 50 Free Spins on Sign-Up, 150 More on Â£10 Play Visit Casino Compare Added GC Verified by Gambling.com Licensed and regulated by the UK Gambling Commission. This operator meets strict standards for player safety, fair play and secure payments. 18+. Gamble Responsibly. Gambleaware.org . 18+. New Casino players only. 50 Free Spins (Â£0.10 each, valid on selected games, valid 7 days) will be awarded upon registration. For the additional 150 Free Spins the customer must deposit (certain deposit types excluded) and Bet Â£10+ on Any Slot games (within 7 days of registration) for 150 free Spins (Â£0.10 each, valid on selected games, valid 7 days). Restrictions and T&Cs apply.- Full Terms Apply"
-    },
-    {
-      "rank": 5,
-      "casino": "Ladbrokes Casino",
-      "welcome_bonus": "50 Free Spins + 150 Free Spins",
-      "wagering_requirement": 0,
-      "minimum_deposit": null,
-      "source_url": "https://www.gambling.com/uk/online-casinos/bonus",
-      "details": {
-        "wagering_display": "None",
-        "wagering_applies_to": null,
-        "min_deposit_amount": null,
-        "currency": "GBP",
-        "bonus_type": "free_spins",
-        "notes": "Free spins worth £0.10 each, valid 7 days; extra 150 spins require a £10 bet on slots within 30 days, certain deposit types excluded",
-        "advertised_headline": "50 Free Spins on Sign-Up, 150 More on Â£10 Play",
-        "review_url": "https://www.gambling.com/uk/online-casinos/reviews/ladbrokes"
-      },
-      "checks": {
-        "welcome_bonus": "verified",
-        "wagering_multiplier": "unverified",
-        "min_deposit_amount": "missing"
-      },
-      "needs_review": true,
-      "raw_terms": "5 50 Free Spins on Sign-Up, 150 More on Â£10 Play Visit Casino Compare Added GC Verified by Gambling.com Licensed and regulated by the UK Gambling Commission. This operator meets strict standards for player safety, fair play and secure payments. 18+. Gamble Responsibly. Gambleaware.org . 18+. New Casino players only. 50 Free Spins (Â£0.10 each, selected games only, valid 7 days) awarded upon registration. For additional 150 Free Spins (Â£0.10 each, selected games only, valid 7 days) deposit (certain deposit types excluded) and bet Â£10+ on any Slot games within 30 days of registration Restrictions and T&Cs apply.- Full Terms Apply"
     }
   ]
 }

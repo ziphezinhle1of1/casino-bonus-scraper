@@ -90,6 +90,30 @@ def test_anthropic_request(monkeypatch):
     assert seen["body"]["model"] == "some-model" and label == "anthropic/some-model"
 
 
+def test_timeout_is_retried_and_bad_key_is_not(monkeypatch):
+    monkeypatch.setenv("LLM_PROVIDER", "gemini")
+    monkeypatch.setenv("LLM_API_KEY", "k")
+    monkeypatch.setattr(llm.time, "sleep", lambda s: None)
+    replies = [llm.requests.Timeout("slow"), FakeResponse(503, text="busy"),
+               FakeResponse(200, {"choices": [{"message": {"content": json.dumps(ANSWER)}}]})]
+
+    def fake_post(*a, **k):
+        r = replies.pop(0)
+        if isinstance(r, Exception):
+            raise r
+        return r
+
+    monkeypatch.setattr(llm.requests, "post", fake_post)
+    call, _ = llm.make_caller()
+    assert llm.extract_terms(call, "X", "terms") == ANSWER
+
+    calls = []
+    monkeypatch.setattr(llm.requests, "post", lambda *a, **k: calls.append(1) or FakeResponse(401, text="bad key"))
+    with pytest.raises(RuntimeError, match="401"):
+        call("s", "t")
+    assert len(calls) == 1  # no pointless retries on a wrong key
+
+
 def test_rate_limit_is_retried(monkeypatch):
     monkeypatch.setenv("LLM_PROVIDER", "gemini")
     monkeypatch.setenv("LLM_API_KEY", "k")
