@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-10-15T17:48:43+00:00",
+  "source": {
+    "name": "Gambling.com",
+    "url": "https://www.gambling.com/uk/online-casinos/bonus"
+  },
+  "extracted_with": "groq/openai/gpt-oss-120b",
+  "casino_count": 3,
+  "casinos": [
+    {
+      "rank": 1,
+      "casino": "Mr Vegas Casino",
+      "welcome_bonus": "100% up to £50 + 11 Free Spins",
+      "wagering_requirement": 10,
+      "minimum_deposit": "10 GBP",
+      "source_url": "https://www.gambling.com/uk/online-casinos/bonus",
+      "details": {
+        "wagering_display": "10x",
+        "wagering_applies_to": "deposit",
+        "min_deposit_amount": 10,
+        "currency": "GBP",
+        "bonus_type": "deposit_match",
+        "notes": "Wager within 60 days; one‑time use",
+        "advertised_headline": "100% up to Â£50 + 11 Free Spins",
+        "review_url": "https://www.gambling.com/uk/online-casinos/reviews/mr-vegas"
+      },
+      "checks": {
+        "welcome_bonus": "verified",
+        "wagering_multiplier": "verified",
+        "min_deposit_amount": "verified"
+      },
+      "needs_review": false,
+      "raw_terms": "1 100% up to Â£50 + 11 Free Spins Visit Casino Compare Added GC Verified by Gambling.com Licensed and regulated by the UK Gambling Commission. This operator meets strict standards for player safety, fair play and secure payments. 18+. Gamble Responsibly. Gambleaware.org . The Welcome Bonus is only available to newly registered players who make a minimum initial deposit of Â£10. The welcome offer can be activated only once, when making your first deposit. In order to receive the maximum of Â£50 bonus, you will need to wager an amount equal to 10 times the value of your first initial deposit within 60 calendar days from the date on which the Welcome Bonus option has been activated under the 'My Bonuses' section of your account.. Full Terms Apply."
+    },
+    {
+      "rank": 2,
+      "casino": "Mega Riches Casino",
+      "welcome_bonus": "100% up to £25 + 50 Chances to Become a Millionaire",
+      "wagering_requirement": 10,
+      "minimum_deposit": "10 GBP",
+      "source_url": "https://www.gambling.com/uk/online-casinos/bonus",
+      "details": {
+        "wagering_display": "10x",
+        "wagering_applies_to": "bonus",
+        "min_deposit_amount": 10,
+        "currency": "GBP",
+        "bonus_type": "deposit_match",
+        "notes": "New players only",
+        "advertised_headline": "100% Welcome Bonus up to Â£25 + 50 Chances to Become a Millionaire",
+        "review_url": "https://www.gambling.com/uk/online-casinos/reviews/mega-riches"
+      },
+      "checks": {
+        "welcome_bonus": "verified",
+        "wagering_multiplier": "verified",
+        "min_deposit_amount": "verified"
+      },
+      "needs_review": false,
+      "raw_terms": "2 100% Welcome Bonus up to Â£25 + 50 Chances to Become a Millionaire Visit Casino Compare Added GC Verified by Gambling.com Licensed and regulated by the UK Gambling Commission. This operator meets strict standards for player safety, fair play and secure payments. 18+. Gamble Responsibly. Gambleaware.org . New players only. Min dep Â£10. Wager req. 10x. 18+. T&Cs apply."
+    },
+    {
+      "rank": 3,
+      "casino": "Videoslots Casino",
+      "welcome_bonus": "100% up to £50 + 11 Free Spins",
+      "wagering_requirement": 10,
+      "minimum_deposit": "10 GBP",
+      "source_url": "https://www.gambling.com/uk/online-casinos/bonus",
+      "details": {
+        "wagering_display": "10x",
+        "wagering_applies_to": "bonus",
+        "min_deposit_amount": 10,
+        "currency": "GBP",
+        "bonus_type": "deposit_match",
+        "notes": "Includes 11 free spins",
+        "advertised_headline": "100% Welcome Bonus up to Â£50 + 11 Free Spins",
+        "review_url": "https://www.gambling.com/uk/online-casinos/reviews/videoslots"
+      },
+      "checks": {
+        "welcome_bonus": "verified",
+        "wagering_multiplier": "verified",
+        "min_deposit_amount": "verified"
+      },
+      "needs_review": false,
+      "raw_terms": "3 100% Welcome Bonus up to Â£50 + 11 Free Spins Visit Casino Compare Added GC Verified by Gambling.com Licensed and regulated by the UK Gambling Commission. This operator meets strict standards for player safety, fair play and secure payments. 18+. Gamble Responsibly. Gambleaware.org . New players only. Min. dep. Â£10. Wager req. 10x. 18+.- Full Terms Apply"
+    }
+  ]
+}
