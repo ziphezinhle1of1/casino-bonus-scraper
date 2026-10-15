@@ -12,8 +12,10 @@ from urllib.parse import parse_qs, urljoin, urlsplit
 
 from bs4 import BeautifulSoup, Tag
 
-# Offer links on gambling.com look like /go/uk/<casino-slug>/offer/<id>#...list_position=1...
-OFFER_HREF = re.compile(r"/go/[a-z]{2}/(?P<slug>[a-z0-9-]+)/offer/")
+# Offer links on gambling.com go through /go/<country>/<casino-slug>/..., e.g.
+#   UK: /go/uk/mr-vegas/offer/8458#listid=115&listtype=product-ranking-best&list_position=1...
+#   IE: /go/ie/888/casino/play-now/103536#listid=150&listtype=primary&list_position=2...
+OFFER_HREF = re.compile(r"/go/[a-z]{2}/(?P<slug>[a-z0-9-]+)/")
 REVIEW_HREF = re.compile(r"/online-casinos/reviews/(?P<slug>[a-z0-9-]+)/?$")
 
 
@@ -71,15 +73,21 @@ def extract_blocks(html: str, page_url: str) -> list[CasinoBlock]:
         junk.decompose()
 
     found: dict[str, CasinoBlock] = {}
+    main_list: str | None = None
     for anchor in soup.find_all("a", href=True):
         match = OFFER_HREF.search(anchor["href"])
         if not match:
             continue
         params = _fragment_params(anchor["href"])
-        # Only the main ranked comparison list; skip sidebar "also consider" tables etc.
-        if params.get("listtype") not in (None, "product-ranking-best"):
-            continue
+        # The headline bonus is the link marked ctalocation=bonus-offer.
         if params.get("ctalocation") != "bonus-offer":
+            continue
+        # The main ranked list is the first one on the page. Country pages name it differently
+        # (UK "product-ranking-best", IE "primary"), so we match on its list id, not its name.
+        # That skips the later "best for..." and "also consider" lists.
+        if main_list is None:
+            main_list = params.get("listid", "")
+        if params.get("listid", "") != main_list:
             continue
         slug = match.group("slug")
         if slug in found:

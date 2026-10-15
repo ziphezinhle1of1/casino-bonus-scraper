@@ -5,7 +5,8 @@ Pulls the welcome bonus, wagering requirement and minimum deposit for 3 online c
 A language model turns each casino's free-text terms into structured fields, and the result
 is written to `data/bonuses.json` and published as a phone-friendly page.
 
-**Live page:** https://YOUR-GITHUB-USERNAME.github.io/casino-bonus-scraper/
+**Live page:** https://ziphezinhle1of1.github.io/casino-bonus-scraper/  
+**Repository:** https://github.com/ziphezinhle1of1/casino-bonus-scraper
 
 ## How it works
 
@@ -41,10 +42,10 @@ Design choices:
 Needs Python 3.10+.
 
 ```bash
-git clone https://github.com/YOUR-GITHUB-USERNAME/casino-bonus-scraper.git
+git clone https://github.com/ziphezinhle1of1/casino-bonus-scraper.git
 cd casino-bonus-scraper
 pip install -r requirements.txt
-cp .env.example .env        # then paste your API key into .env
+cp .env.example .env        # then paste your API key into .env (Windows: copy .env.example .env)
 python scrape.py            # the single command: scrape -> data/bonuses.json -> docs/index.html
 ```
 
@@ -54,8 +55,8 @@ Any of these works; set `LLM_PROVIDER` to match.
 
 | Provider | `LLM_PROVIDER` | Key from |
 |---|---|---|
+| Groq (free tier, used for the published data) | `groq` | https://console.groq.com/keys |
 | Google Gemini (free tier) | `gemini` | https://aistudio.google.com/apikey |
-| Groq (free tier) | `groq` | https://console.groq.com/keys |
 | OpenAI | `openai` | https://platform.openai.com/api-keys |
 | Anthropic | `anthropic` | https://console.anthropic.com/ |
 
@@ -67,16 +68,17 @@ Model names change over time. If the default model for your provider is retired,
 ```bash
 python scrape.py --limit 5                                         # more casinos
 python scrape.py --url https://www.gambling.com/ie/online-casinos/bonus   # Irish page, prices in EUR
-python scrape.py --html saved_page.html                            # parse a saved copy (debugging)
+python scrape.py --html page.html     # parse a page you saved from your browser (debugging only)
 python build_site.py                                               # rebuild the page only
-python -m pytest                                                   # tests (offline: fixture + fake model)
+pip install pytest                                                 # once
+python -m pytest                                                   # tests (offline: saved pages + fake model)
 ```
 
 ## Publish the page (GitHub Pages)
 
 1. Push this repo to GitHub (public).
 2. **Settings → Pages → Build and deployment:** Source = *Deploy from a branch*, Branch = `main`, folder = `/docs`.
-3. The page appears at `https://YOUR-GITHUB-USERNAME.github.io/casino-bonus-scraper/` within a minute or two.
+3. The page appears at `https://ziphezinhle1of1.github.io/casino-bonus-scraper/` within a minute or two.
 
 ### Optional: daily update
 
@@ -91,7 +93,7 @@ gets a 403, the scraper stops (as the rules require) and you can keep running it
 {
   "generated_at": "2026-10-14T10:23:00+00:00",
   "source": { "name": "Gambling.com", "url": "https://www.gambling.com/uk/online-casinos/bonus" },
-  "extracted_with": "gemini/gemini-2.5-flash",
+  "extracted_with": "groq/openai/gpt-oss-120b",
   "casinos": [
     {
       "rank": 1,

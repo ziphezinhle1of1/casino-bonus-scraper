@@ -31,7 +31,7 @@ def fake_llm(system: str, text: str) -> str:
 
 
 def blocks():
-    return parse.extract_blocks(FIXTURE.read_text(), URL)
+    return parse.extract_blocks(FIXTURE.read_text(encoding="utf-8"), URL)
 
 
 def test_finds_ranked_list_only_in_order():
@@ -83,7 +83,7 @@ def test_hallucinated_values_are_flagged(tmp_path):
 def test_output_has_the_four_required_fields(tmp_path):
     out = tmp_path / "bonuses.json"
     scrape.run(URL, 3, str(FIXTURE), out, fake_llm, "fake/model")
-    data = json.loads(out.read_text())
+    data = json.loads(out.read_text(encoding="utf-8"))
     assert data["casino_count"] == 3
     for c in data["casinos"]:
         for key in ("welcome_bonus", "wagering_requirement", "minimum_deposit", "source_url"):
@@ -93,12 +93,12 @@ def test_output_has_the_four_required_fields(tmp_path):
 
 def test_failed_run_keeps_previous_json(tmp_path):
     out = tmp_path / "bonuses.json"
-    out.write_text('{"keep": true}')
+    out.write_text('{"keep": true}', encoding="utf-8")
     empty = tmp_path / "empty.html"
-    empty.write_text("<html><body>nothing</body></html>")
+    empty.write_text("<html><body>nothing</body></html>", encoding="utf-8")
     with pytest.raises(RuntimeError):
         scrape.run(URL, 3, str(empty), out, fake_llm, "fake/model")
-    assert json.loads(out.read_text()) == {"keep": True}
+    assert json.loads(out.read_text(encoding="utf-8")) == {"keep": True}
 
 
 def test_page_renders_and_escapes(tmp_path):
@@ -106,8 +106,16 @@ def test_page_renders_and_escapes(tmp_path):
     scrape.run(URL, 3, str(FIXTURE), out, fake_llm, "fake/model")
     page = tmp_path / "site" / "index.html"
     build_site.build(out, page)
-    html = page.read_text()
+    html = page.read_text(encoding="utf-8")
     assert 'name="viewport"' in html
     assert html.count("<tr>") == 4  # header + 3 casinos
     assert "check source" in html  # the flagged Videoslots values
     assert (tmp_path / "site" / "bonuses.json").exists()
+
+
+def test_irish_page_layout_is_parsed():
+    html = (Path(__file__).parent / "fixtures" / "gambling_com_ie_sample.html").read_text(encoding="utf-8")
+    found = parse.extract_blocks(html, "https://www.gambling.com/ie/online-casinos/bonus")
+    assert [b.slug for b in found] == ["lottoland", "888"]  # secondary list skipped
+    assert found[0].name == "Lottoland Casino"
+    assert validate.detect_page_currency(" ".join(b.text for b in found)) == "EUR"
